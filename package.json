@@ -1,0 +1,43 @@
+{
+  "name": "dsh-quick-restart",
+  "version": "0.1.1",
+  "type": "module",
+  "description": "在 DSH 网页顶部右侧放一个「重启」入口：一键结束并重新拉起桌面壳，插件更新后不用再手动关开。",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "dsh": ">=0.2.2-rc.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "slots"
+      ]
+    }
+  },
+  "license": "MIT",
+  "author": "Danbo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Danbo-ai/dsh-quick-restart.git"
+  },
+  "homepage": "https://github.com/Danbo-ai/dsh-quick-restart#readme",
+  "bugs": {
+    "url": "https://github.com/Danbo-ai/dsh-quick-restart/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness"
+  ]
+}

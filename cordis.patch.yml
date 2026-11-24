@@ -1,0 +1,16 @@
+# dsh-quick-restart bundle patch: mounts the plugin into the host composition
+# of a dsh profile.
+#
+# The host half registers two routes under /plugins/dsh-quick-restart/ and the
+# browser half mounts a floating entry into the frame-level `shell.overlay`
+# seat. Installing the bundle is enough: `plugin_manager install_bundle
+# target=<absolute package dir>`.
+#
+# No config today — the restart target is discovered from the host process
+# itself (parent pid + execPath), never from a config file that could go stale.
+- insert:
+    - id: quick-restart
+      # Node-resolvable package name — must stay in sync with package.json
+      # `name`.
+      name: 'dsh-quick-restart'
+      config: {}
